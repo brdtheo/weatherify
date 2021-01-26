@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+}
