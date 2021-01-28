@@ -4,15 +4,15 @@
   <section>
     <div class="sidebar-search">
       <input type="text" placeholder="Another location" />
-      <button type="button" role="button">
+      <button class="search-button" type="button" role="button">
         <ion-icon name="search-outline" />
       </button>
     </div>
     <div class="sidebar-list">
-      <div class="sidebar-list-item">Birmingham</div>
-      <div class="sidebar-list-item">Manchester</div>
-      <div class="sidebar-list-item">New York</div>
-      <div class="sidebar-list-item">California</div>
+      <button class="sidebar-list-item">Birmingham</button>
+      <button class="sidebar-list-item">Manchester</button>
+      <button class="sidebar-list-item">New York</button>
+      <button class="sidebar-list-item">California</button>
     </div>
   </section>
   <section>
@@ -113,6 +113,14 @@
   }
 
   button {
+    font-size: inherit;
+    background: inherit;
+    border: inherit;
+    color: inherit;
+    font: inherit;
+  }
+
+  .search-button {
     background: #d66d32;
     border: none;
     width: 80px;
@@ -123,7 +131,7 @@
     font-size: 30px;
   }
 
-  button:focus {
+  .search-button:focus {
     outline: none;
     border: dotted #fff 2px;
   }
@@ -136,10 +144,19 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding-bottom: 30px;
+    margin-bottom: 30px;
   }
 
   .sidebar-list-item:last-of-type {
     padding-bottom: 0;
+  }
+
+  button.sidebar-list-item {
+    transition: color ease-in 100ms;
+  }
+
+  button.sidebar-list-item:focus, button.sidebar-list-item:hover {
+    color: #fff;
+    outline: none;
   }
 </style>
