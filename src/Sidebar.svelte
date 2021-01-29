@@ -1,14 +1,15 @@
 <script>
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher();
+
   $: input = "";
   $: weather = {
     cityName: "City",
-    temperature: null,
-    cloudy: null,
-    humidity: null,
-    windSpeed: null,
+    temperature: 0,
+    cloudy: 0,
+    humidity: 0,
+    windSpeed: 0,
   };
-
-  let promise = getWeather();
 
   function pressEnter(key) {
     if (key.keyCode === 13) {
@@ -34,7 +35,15 @@
         weather.cloudy = json.current.cloudcover;
         weather.humidity = json.current.humidity;
         weather.windSpeed = json.current.wind_speed;
-        console.log(json);
+
+        dispatch("fetchNewData", {
+          weather: {
+            temperature: json.current.temperature,
+            city: json.location.name,
+            state: json.current.weather_descriptions[0],
+          },
+        });
+        //console.log(json);
       }
     }
   }

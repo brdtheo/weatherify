@@ -1,16 +1,20 @@
-<script></script>
+<script>
+  export let temperature = 0;
+  export let city = 'city';
+  export let state = 'state';
+</script>
 
 <div class="weather-content">
   <div class="weather-website-name">the.weather</div>
   <div class="bottom-content">
-    <div class="weather-temperature">16</div>
+    <div class="weather-temperature">{temperature}</div>
     <div class="weather-city-date">
-      <h1>London</h1>
-      <span class="weather-date">06:09 - Monday, 9 Sep '19</span>
+      <h1>{city}</h1>
+      <span class="weather-date"> 06:09 - Monday, 9 Sep '19 </span>
     </div>
     <div class="weather-state">
       <span class="state-icon"><ion-icon name="partly-sunny-outline" /></span>
-      Cloudy
+      {state}
     </div>
   </div>
 </div>

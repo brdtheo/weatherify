@@ -1,13 +1,23 @@
 <script>
   import Sidebar from "./Sidebar.svelte";
   import WeatherContent from "./WeatherContent.svelte";
+
+  let temperature;
+  let city;
+  let state;
+
+  function updateProps(event) {
+    temperature = event.detail.weather.temperature;
+    city = event.detail.weather.city;
+    state = event.detail.weather.state;
+  }
 </script>
 
 <main>
   <div class="main-container">
     <div class="main-container-layout">
-      <WeatherContent />
-      <Sidebar />
+      <WeatherContent {city} {temperature} {state} />
+      <Sidebar on:fetchNewData={updateProps} />
     </div>
   </div>
 </main>
