@@ -2,8 +2,6 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  export let getCity;
-
   $: input = "";
   $: weather = {
     cityName: "Reims",
