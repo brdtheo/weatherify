@@ -28,7 +28,7 @@
   <div class="bottom-content">
     <div class="weather-temperature">{temperature}</div>
     <div class="weather-city-date">
-      <h1>{city}</h1>
+      <h1 id="current-city">{city}</h1>
       <span class="weather-date"> 06:09 - Monday, 9 Sep '19 </span>
     </div>
     <div class="weather-state">

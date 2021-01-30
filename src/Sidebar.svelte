@@ -2,9 +2,11 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
+  export let getCity;
+
   $: input = "";
   $: weather = {
-    cityName: "City",
+    cityName: "Reims",
     temperature: 0,
     cloudy: 0,
     humidity: 0,
@@ -26,24 +28,28 @@
 
   async function getWeather() {
     const query = input;
-    if (query) {
-      const res = await fetch(
-        `http://api.weatherstack.com/current?access_key=bc78ee92848d943acdb1658e8acdc877&query=${query}&units=m`
-      );
-      if (res.ok) {
-        const json = await res.json();
-        weather.cloudy = json.current.cloudcover;
-        weather.humidity = json.current.humidity;
-        weather.windSpeed = json.current.wind_speed;
+    const currentCity = document.getElementById("current-city").innerText;
 
-        dispatch("fetchNewData", {
-          weather: {
-            temperature: json.current.temperature,
-            city: json.location.name,
-            state: json.current.weather_descriptions[0],
-          },
-        });
-        //console.log(json);
+    if (query) {
+      if (!(query.toLowerCase() === currentCity.toLowerCase())) {
+        const res = await fetch(
+          `http://api.weatherstack.com/current?access_key=bc78ee92848d943acdb1658e8acdc877&query=${query}&units=m`
+        );
+        if (res.ok) {
+          const json = await res.json();
+          weather.cloudy = json.current.cloudcover;
+          weather.humidity = json.current.humidity;
+          weather.windSpeed = json.current.wind_speed;
+
+          dispatch("fetchNewData", {
+            weather: {
+              temperature: json.current.temperature,
+              city: json.location.name,
+              state: json.current.weather_descriptions[0],
+            },
+          });
+          //console.log(json);
+        }
       }
     }
   }
