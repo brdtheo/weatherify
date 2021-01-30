@@ -1,7 +1,26 @@
 <script>
   export let temperature = 0;
-  export let city = 'city';
-  export let state = 'state';
+  export let city = "city";
+  export let state = "state";
+  export let stateIcon;
+
+  $: {
+    const a = state.toLowerCase();
+
+    if (a.includes("sunny" || "clear")) {
+      stateIcon = "sunny-outline";
+    } else if (a.includes("rain")) {
+      stateIcon = "rainy-outline";
+    } else if (a.includes("cloudy" || "overcast")) {
+      stateIcon = "cloudy-outline";
+    } else if (a.includes("thunderstorm")) {
+      stateIcon = "thunderstorm-outline";
+    } else if (a.includes("snow")) {
+      stateIcon = "snow-outline";
+    } else {
+      stateIcon = null;
+    }
+  }
 </script>
 
 <div class="weather-content">
@@ -13,7 +32,7 @@
       <span class="weather-date"> 06:09 - Monday, 9 Sep '19 </span>
     </div>
     <div class="weather-state">
-      <span class="state-icon"><ion-icon name="partly-sunny-outline" /></span>
+      <span class="state-icon"><ion-icon name={stateIcon} /></span>
       {state}
     </div>
   </div>
