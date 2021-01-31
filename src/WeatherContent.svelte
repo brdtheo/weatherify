@@ -1,8 +1,18 @@
 <script>
+  import { onMount } from "svelte";
+  import { format } from "date-fns";
+
   export let temperature = 0;
   export let city = "city";
   export let state = "state";
   export let stateIcon;
+  let date = format(new Date(), "hh:mm - cccc, d LLL yy") + "'";
+
+  onMount(() => {
+    const updateDate = setInterval(() => {
+      date = format(new Date(), "hh:mm - cccc, d LLL yy") + "'";
+    }, 1000);
+  });
 
   $: {
     const a = state.toLowerCase();
@@ -29,7 +39,7 @@
     <div class="weather-temperature">{temperature}</div>
     <div class="weather-city-date">
       <h1 id="current-city">{city}</h1>
-      <span class="weather-date"> 06:09 - Monday, 9 Sep '19 </span>
+      <span class="weather-date">{date}</span>
     </div>
     <div class="weather-state">
       <span class="state-icon"><ion-icon name={stateIcon} /></span>
