@@ -1,7 +1,9 @@
 <script>
+  import Loading from "./Loading.svelte";
   import Sidebar from "./Sidebar.svelte";
   import WeatherContent from "./WeatherContent.svelte";
 
+  let loading = false;
   let temperature;
   let city;
   let state;
@@ -16,6 +18,9 @@
 <main>
   <div class="main-container">
     <div class="main-container-layout">
+      {#if loading}
+        <Loading />
+      {/if}
       <WeatherContent {city} {temperature} {state} />
       <Sidebar on:fetchNewData={updateProps} />
     </div>
