@@ -193,7 +193,7 @@
   }
 
   .search-button {
-    background: #d66d32;
+    background: var(--orange);
     color: #000;
     border: none;
     width: 80px;

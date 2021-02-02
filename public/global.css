@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --orange: #d66d32;
+}
+
 body {
   font-family: 'Jost';
 }
