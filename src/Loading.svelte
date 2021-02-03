@@ -9,20 +9,14 @@
       <div class="loading-thumb-container">
         <div class="loading-thumb" />
       </div>
-      <p>loading data...</p>
+      <p>loading...</p>
     </div>
   </div>
 </div>
 
 <style>
   .loading-container {
-    background-color: rgb(45, 45, 45);
-    background-image: url("https://images.unsplash.com/photo-1592210454359-9043f067919b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80");
     position: absolute;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
     width: 100%;
     height: 100%;
     top: 0;
@@ -37,7 +31,7 @@
     width: 100%;
     height: 100%;
     background: red;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
     background-color: rgba(255, 255, 255, 0.5);
   }
 
@@ -61,7 +55,7 @@
   .loading-thumb-container {
     background: rgba(40, 40, 40, 0.2);
     width: 100%;
-    height: 5px;
+    height: 3px;
     overflow: hidden;
     position: relative;
   }
@@ -70,8 +64,8 @@
     position: absolute;
     left: 0;
     top: 0;
-    background: rgba(255, 255, 255, 0.9);
-    width: 50px;
+    background: var(--orange);
+    width: 60px;
     height: 100%;
     animation: loading 1200ms infinite;
   }
