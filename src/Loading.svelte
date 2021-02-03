@@ -2,7 +2,7 @@
   import { fade } from "svelte/transition";
 </script>
 
-<div class="loading-container" transition:fade={{ delay: 250, duration: 300 }}>
+<div class="loading-container" transition:fade={{ delay: 0, duration: 500 }}>
   <div class="blur-container">
     <div class="loading-content">
       <h1>Weatherify</h1>
