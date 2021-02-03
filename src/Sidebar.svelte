@@ -2,14 +2,9 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
+  export let weather = {};
+
   $: input = "";
-  $: weather = {
-    cityName: "Reims",
-    temperature: 0,
-    cloudy: 0,
-    humidity: 0,
-    windSpeed: 0,
-  };
 
   function pressEnter(key) {
     if (key.keyCode === 13) {
