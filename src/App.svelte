@@ -16,12 +16,15 @@
     state = event.detail.weather.state;
   }
 
+  function setLoading(event) {
+    loading = event.detail;
+  }
+
   onMount(async () => {
-    
     const res = await fetch(
       "http://api.weatherstack.com/current?access_key=bc78ee92848d943acdb1658e8acdc877&query=London&units=m"
     );
-    
+
     if (res.ok) {
       const json = await res.json();
       temperature = json.current.temperature;
@@ -42,7 +45,11 @@
         <Loading />
       {/if}
       <WeatherContent {city} {temperature} {state} />
-      <Sidebar on:fetchNewData={updateProps} {weather} />
+      <Sidebar
+        on:setLoading={setLoading}
+        on:fetchNewData={updateProps}
+        {weather}
+      />
     </div>
   </div>
 </main>

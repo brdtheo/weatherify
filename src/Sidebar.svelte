@@ -25,6 +25,7 @@
 
     if (query) {
       if (!(query.toLowerCase() === currentCity.toLowerCase())) {
+        dispatch("setLoading", true);
         const res = await fetch(
           `http://api.weatherstack.com/current?access_key=bc78ee92848d943acdb1658e8acdc877&query=${query}&units=m`
         );
@@ -41,6 +42,7 @@
               state: json.current.weather_descriptions[0],
             },
           });
+          dispatch("setLoading", false);
           //console.log(json);
         }
       }
