@@ -27,23 +27,22 @@
       if (!(query.toLowerCase() === currentCity.toLowerCase())) {
         dispatch("setLoading", true);
         const res = await fetch(
-          `http://api.weatherstack.com/current?access_key=bc78ee92848d943acdb1658e8acdc877&query=${query}&units=m`
+          `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=bb3fdf7b1caa0a590ae5218d425c21a4`
         );
         if (res.ok) {
           const json = await res.json();
-          weather.cloudy = json.current.cloudcover;
-          weather.humidity = json.current.humidity;
-          weather.windSpeed = json.current.wind_speed;
+          weather.cloudy = json.clouds.all;
+          weather.humidity = json.main.humidity;
+          weather.windSpeed = Math.round(json.wind.speed);
 
           dispatch("fetchNewData", {
             weather: {
-              temperature: json.current.temperature,
-              city: json.location.name,
-              state: json.current.weather_descriptions[0],
+              temperature: Math.round(json.main.temp - 273.15),
+              city: json.name,
+              state: json.weather[0].main,
             },
           });
           dispatch("setLoading", false);
-          //console.log(json);
         }
       }
     }
