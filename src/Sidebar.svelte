@@ -116,7 +116,7 @@
   .sidebar {
     backdrop-filter: blur(18px);
     background: rgba(255, 255, 255, 0.05);
-    width: 480px;
+    width: 100%;
     box-shadow: 0 -5px 16px 10px rgba(0, 0, 0, 0.1);
     font-family: "Lato", sans-serif;
     font-size: 18px;

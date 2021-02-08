@@ -65,7 +65,8 @@
   }
 
   .main-container-layout {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 480px;
     height: 100%;
   }
 </style>
