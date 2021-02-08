@@ -115,6 +115,9 @@
 <style>
   .sidebar {
     backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    -moz-backdrop-filter: blur(18px);
+    -ms-backdrop-filter: blur(18px);
     background: rgba(255, 255, 255, 0.05);
     width: 100%;
     box-shadow: 0 -5px 16px 10px rgba(0, 0, 0, 0.1);
@@ -164,12 +167,13 @@
 
   input {
     display: flex;
-    flex: 1;
+    width: 100%;
     margin: 0 50px;
     background: none;
     border: inherit;
     border-bottom: solid rgba(255, 255, 255, 0.4) 1px;
     padding-bottom: 8px;
+    border-radius: 0;
     font: inherit;
     color: inherit;
     transition: border-bottom-color ease-in-out 100ms;
@@ -192,8 +196,8 @@
     background: var(--orange);
     color: #000;
     border: none;
-    width: 80px;
-    height: 80px;
+    min-width: 80px;
+    min-height: 80px;
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -228,5 +232,13 @@
   button.sidebar-list-item:hover {
     color: #fff;
     outline: none;
+  }
+
+  @media screen and (max-width: 768px) {
+    section,
+    section:first-of-type .sidebar-list,
+    input {
+      margin: 0 20px;
+    }
   }
 </style>

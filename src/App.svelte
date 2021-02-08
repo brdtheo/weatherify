@@ -69,4 +69,26 @@
     grid-template-columns: 1fr 480px;
     height: 100%;
   }
+
+  @media screen and (max-width: 1200px) {
+    .main-container-layout {
+      grid-template-columns: 1fr 350px;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .main-container {
+      background-position: inherit;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .main-container {
+      height: auto;
+    }
+
+    .main-container-layout {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

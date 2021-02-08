@@ -106,4 +106,59 @@
     font-weight: 300;
     font-family: "Lato", sans-serif;
   }
+
+  @media screen and (max-width: 1200px) {
+    .weather-city-date h1 {
+      font-size: 50px;
+    }
+
+    .state-icon {
+      font-size: 30px;
+    }
+
+    .weather-temperature {
+      font-size: 120px;
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .weather-content {
+      padding: 20px 20px 50px;
+    }
+
+    .bottom-content {
+      margin-top: 10vh;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .weather-content {
+      padding: 20px;
+    }
+
+    .weather-city-date h1 {
+      font-size: 20px;
+    }
+
+    .state-icon {
+      font-size: 30px;
+    }
+
+    .weather-temperature {
+      font-size: 80px;
+    }
+
+    .weather-city-date,
+    .weather-state {
+      padding: 0;
+    }
+
+    .weather-state {
+      margin-top: 30px;
+    }
+
+    .bottom-content {
+      display: grid;
+    }
+  }
 </style>
