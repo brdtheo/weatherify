@@ -3,12 +3,21 @@
   import Loading from "./Loading.svelte";
   import Sidebar from "./Sidebar.svelte";
   import WeatherContent from "./WeatherContent.svelte";
+  import ErrorBar from "./ErrorBar.svelte";
 
   let loading = true;
   let temperature;
   let city;
   let state;
   let weather = {};
+  let error = false;
+
+  function setError(event) {
+    error = event.detail;
+    setTimeout(() => {
+      error = false;
+    }, 4000);
+  }
 
   function updateProps(event) {
     temperature = event.detail.weather.temperature;
@@ -48,10 +57,15 @@
       <Sidebar
         on:setLoading={setLoading}
         on:fetchNewData={updateProps}
+        on:setError={setError}
         {weather}
       />
     </div>
   </div>
+
+  {#if error}
+    <ErrorBar on:setError={setError} />
+  {/if}
 </main>
 
 <style>

@@ -24,6 +24,7 @@
     const currentCity = document.getElementById("current-city").innerText;
 
     if (query) {
+      dispatch("setError", false);
       if (!(query.toLowerCase() === currentCity.toLowerCase())) {
         dispatch("setLoading", true);
         const res = await fetch(
@@ -43,6 +44,9 @@
             },
           });
           dispatch("setLoading", false);
+        } else {
+          dispatch("setLoading", false);
+          dispatch("setError", true);
         }
       }
     }
