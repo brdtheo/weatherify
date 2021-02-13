@@ -6,6 +6,7 @@
   import ErrorBar from "./ErrorBar.svelte";
 
   let loading = true;
+  let backgroundImage;
   let temperature;
   let city;
   let state;
@@ -24,10 +25,40 @@
     temperature = event.detail.weather.temperature;
     city = event.detail.weather.city;
     state = event.detail.weather.state;
+    setBackground();
   }
 
   function setLoading(event) {
     loading = event.detail;
+  }
+
+  function setBackground() {
+    switch (state) {
+      case "Clouds":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1601&q=80";
+        break;
+      case "Rain":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1486016006115-74a41448aea2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80";
+        break;
+      case "Sunny":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1438129460879-8f5868d4a802?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+        break;
+      case "Clear":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1438129460879-8f5868d4a802?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+        break;
+      case "Snow":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1554417063-60e738613596?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1340&q=80";
+        break;
+      case "Mist":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1604896787809-5f3082b014de?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80";
+        break;
+    }
   }
 
   onMount(async () => {
@@ -46,7 +77,6 @@
       weather.cloudy = currentJSON.clouds.all;
       weather.humidity = currentJSON.main.humidity;
       weather.windSpeed = Math.round(currentJSON.wind.speed);
-      loading = false;
     }
 
     if (forecast.ok) {
@@ -57,11 +87,22 @@
       }
       forecastWeather.shift();
     }
+
+    if (current.ok && forecast.ok) {
+      loading = false;
+      setBackground();
+    }
   });
 </script>
 
 <main>
-  <div class="main-container">
+  <div
+    class="main-container {backgroundImage ===
+    'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1601&q=80'
+      ? 'background-top'
+      : ''}"
+    style={`background-image: url(${backgroundImage});`}
+  >
     <div class="main-container-layout">
       {#if loading}
         <Loading />
@@ -86,16 +127,20 @@
   .main-container {
     width: 100%;
     height: 100%;
-    background: url("https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1601&q=80");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: 0 -150px;
+    background-position: center;
+    transition: background-image ease-in-out 200ms;
   }
 
   .main-container-layout {
     display: grid;
     grid-template-columns: 1fr 480px;
     height: 100%;
+  }
+
+  .background-top {
+    background-position: 0 -150px;
   }
 
   @media screen and (max-width: 1200px) {
