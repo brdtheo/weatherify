@@ -1,8 +1,10 @@
 <script>
+  import { format } from "date-fns";
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
   export let weather = {};
+  export let forecastWeather = [];
 
   $: input = "";
 
@@ -27,26 +29,40 @@
       dispatch("setError", false);
       if (!(query.toLowerCase() === currentCity.toLowerCase())) {
         dispatch("setLoading", true);
-        const res = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=bb3fdf7b1caa0a590ae5218d425c21a4`
+        const current = await fetch(
+          `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=bb3fdf7b1caa0a590ae5218d425c21a4&units=metric`
         );
-        if (res.ok) {
-          const json = await res.json();
-          weather.cloudy = json.clouds.all;
-          weather.humidity = json.main.humidity;
-          weather.windSpeed = Math.round(json.wind.speed);
+        const forecast = await fetch(
+          `http://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=bb3fdf7b1caa0a590ae5218d425c21a4&units=metric`
+        );
+
+        if (current.ok) {
+          const currentJSON = await current.json();
+
+          weather.cloudy = currentJSON.clouds.all;
+          weather.humidity = currentJSON.main.humidity;
+          weather.windSpeed = Math.round(currentJSON.wind.speed);
 
           dispatch("fetchNewData", {
             weather: {
-              temperature: Math.round(json.main.temp - 273.15),
-              city: json.name,
-              state: json.weather[0].main,
+              temperature: Math.round(currentJSON.main.temp),
+              city: currentJSON.name,
+              state: currentJSON.weather[0].main,
             },
           });
           dispatch("setLoading", false);
-        } else {
+        } else if (!current.ok) {
           dispatch("setLoading", false);
           dispatch("setError", true);
+        }
+
+        if (forecast.ok) {
+          const forecastJSON = await forecast.json();
+          forecastWeather = [];
+          for (let i = 0; i < forecastJSON.list.length; i += 8) {
+            forecastWeather.push(forecastJSON.list[i]);
+          }
+          forecastWeather.shift();
         }
       }
     }
@@ -106,12 +122,12 @@
   <section>
     <h2>Next Days</h2>
     <div class="sidebar-list">
-      <div class="sidebar-list-item">Monday</div>
-      <div class="sidebar-list-item">Tuesday</div>
-      <div class="sidebar-list-item">Wednesday</div>
-      <div class="sidebar-list-item">Thursday</div>
-      <div class="sidebar-list-item">Saturday</div>
-      <div class="sidebar-list-item">Sunday</div>
+      {#each forecastWeather as day}
+        <div class="sidebar-list-item">
+          <span>{format(new Date(day.dt_txt), "MMMM d")}</span>
+          <span>{Math.round(day.main.temp)}° - {day.weather[0].main}</span>
+        </div>
+      {/each}
     </div>
   </section>
 </div>

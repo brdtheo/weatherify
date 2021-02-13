@@ -10,6 +10,7 @@
   let city;
   let state;
   let weather = {};
+  let forecastWeather = [];
   let error = false;
 
   function setError(event) {
@@ -30,19 +31,31 @@
   }
 
   onMount(async () => {
-    const res = await fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=London&appid=bb3fdf7b1caa0a590ae5218d425c21a4"
+    const current = await fetch(
+      "http://api.openweathermap.org/data/2.5/weather?q=London&appid=bb3fdf7b1caa0a590ae5218d425c21a4&units=metric"
+    );
+    const forecast = await fetch(
+      `http://api.openweathermap.org/data/2.5/forecast?q=London&appid=bb3fdf7b1caa0a590ae5218d425c21a4&units=metric`
     );
 
-    if (res.ok) {
-      const json = await res.json();
-      temperature = Math.round(json.main.temp - 273.15);
-      city = json.name;
-      state = json.weather[0].main;
-      weather.cloudy = json.clouds.all;
-      weather.humidity = json.main.humidity;
-      weather.windSpeed = Math.round(json.wind.speed);
+    if (current.ok) {
+      const currentJSON = await current.json();
+      temperature = Math.round(currentJSON.main.temp);
+      city = currentJSON.name;
+      state = currentJSON.weather[0].main;
+      weather.cloudy = currentJSON.clouds.all;
+      weather.humidity = currentJSON.main.humidity;
+      weather.windSpeed = Math.round(currentJSON.wind.speed);
       loading = false;
+    }
+
+    if (forecast.ok) {
+      const forecastJSON = await forecast.json();
+      forecastWeather = [];
+      for (let i = 0; i < forecastJSON.list.length; i += 8) {
+        forecastWeather.push(forecastJSON.list[i]);
+      }
+      forecastWeather.shift();
     }
   });
 </script>
@@ -59,6 +72,7 @@
         on:fetchNewData={updateProps}
         on:setError={setError}
         {weather}
+        {forecastWeather}
       />
     </div>
   </div>
