@@ -27,6 +27,8 @@
       stateIcon = "thunderstorm-outline";
     } else if (a.includes("snow")) {
       stateIcon = "snow-outline";
+    } else if (a.includes("mist")) {
+      stateIcon = "filter-outline";
     } else {
       stateIcon = null;
     }
