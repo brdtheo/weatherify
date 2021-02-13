@@ -17,20 +17,31 @@
   $: {
     const a = state.toLowerCase();
 
-    if (a.includes("sunny" || "clear")) {
-      stateIcon = "sunny-outline";
-    } else if (a.includes("rain")) {
-      stateIcon = "rainy-outline";
-    } else if (a.includes("cloudy" || "overcast")) {
-      stateIcon = "cloudy-outline";
-    } else if (a.includes("thunderstorm")) {
-      stateIcon = "thunderstorm-outline";
-    } else if (a.includes("snow")) {
-      stateIcon = "snow-outline";
-    } else if (a.includes("mist")) {
-      stateIcon = "filter-outline";
-    } else {
-      stateIcon = null;
+    switch (a) {
+      case "sunny":
+        stateIcon = "sunny-outline";
+        break;
+      case "clear":
+        stateIcon = "sunny-outline";
+        break;
+      case "rain":
+        stateIcon = "rainy-outline";
+        break;
+      case "clouds":
+        stateIcon = "cloudy-outline";
+        break;
+      case "overcast":
+        stateIcon = "cloudy-outline";
+        break;
+      case "snow":
+        stateIcon = "snow-outline";
+        break;
+      case "mist":
+        stateIcon = "filter-outline";
+        break;
+      default:
+        stateIcon = "alert-circle-outline";
+        break;
     }
   }
 </script>
