@@ -35,32 +35,25 @@
   function setBackground() {
     switch (state) {
       case "Clouds":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1601&q=80";
+        backgroundImage = "images/clouds.jpeg";
         break;
       case "Rain":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1486016006115-74a41448aea2?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1347&q=80";
+        backgroundImage = "images/rain.jpeg";
         break;
       case "Sunny":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1438129460879-8f5868d4a802?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+        backgroundImage = "images/clear.jpeg";
         break;
       case "Clear":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1438129460879-8f5868d4a802?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80";
+        backgroundImage = "images/clear.jpeg";
         break;
       case "Snow":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1554417063-60e738613596?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1340&q=80";
+        backgroundImage = "images/snow.jpeg";
         break;
       case "Mist":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1604896787809-5f3082b014de?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80";
+        backgroundImage = "images/mist.jpeg";
         break;
       case "Haze":
-        backgroundImage =
-          "https://images.unsplash.com/photo-1604896787809-5f3082b014de?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80";
+        backgroundImage = "images/mist.jpeg";
         break;
     }
   }
@@ -100,8 +93,7 @@
 
 <main>
   <div
-    class="main-container {backgroundImage ===
-    'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1601&q=80'
+    class="main-container {backgroundImage === 'images/clouds.jpeg'
       ? 'background-top'
       : ''}"
     style={`background-image: url(${backgroundImage});`}
