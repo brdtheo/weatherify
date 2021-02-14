@@ -62,7 +62,6 @@
           for (let i = 0; i < forecastJSON.list.length; i += 8) {
             forecastWeather.push(forecastJSON.list[i]);
           }
-          forecastWeather.shift();
         }
       }
     }

@@ -58,6 +58,10 @@
         backgroundImage =
           "https://images.unsplash.com/photo-1604896787809-5f3082b014de?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80";
         break;
+      case "Haze":
+        backgroundImage =
+          "https://images.unsplash.com/photo-1604896787809-5f3082b014de?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1489&q=80";
+        break;
     }
   }
 
@@ -85,7 +89,6 @@
       for (let i = 0; i < forecastJSON.list.length; i += 8) {
         forecastWeather.push(forecastJSON.list[i]);
       }
-      forecastWeather.shift();
     }
 
     if (current.ok && forecast.ok) {
@@ -130,7 +133,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    transition: background-image ease-in-out 200ms;
+    background-color: rgba(10, 10, 10, 0.8);
+    transition: background-image ease-in-out 300ms;
   }
 
   .main-container-layout {
