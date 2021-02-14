@@ -27,6 +27,9 @@
       case "rain":
         stateIcon = "rainy-outline";
         break;
+      case "drizzle":
+        stateIcon = "rainy-outline";
+        break;
       case "clouds":
         stateIcon = "cloudy-outline";
         break;

@@ -40,6 +40,9 @@
       case "Rain":
         backgroundImage = "images/rain.jpeg";
         break;
+      case "Drizzle":
+        backgroundImage = "images/rain.jpeg";
+        break;
       case "Sunny":
         backgroundImage = "images/clear.jpeg";
         break;
