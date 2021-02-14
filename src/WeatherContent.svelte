@@ -39,6 +39,9 @@
       case "mist":
         stateIcon = "filter-outline";
         break;
+      case "haze":
+        stateIcon = "filter-outline";
+        break;
       default:
         stateIcon = "alert-circle-outline";
         break;
