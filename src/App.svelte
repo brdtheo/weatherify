@@ -13,6 +13,8 @@
   let weather = {};
   let forecastWeather = [];
   let error = false;
+  $: isBackgroundClouds =
+    backgroundImage === "images/clouds.jpeg" ? true : false;
 
   function setError(event) {
     error = event.detail;
@@ -97,9 +99,7 @@
 <main>
   {#if backgroundImage}
     <div
-      class="main-container {backgroundImage === 'images/clouds.jpeg'
-        ? 'background-top'
-        : ''}"
+      class="main-container {isBackgroundClouds ? 'background-top' : ''}"
       style={`background-image: url(${backgroundImage});`}
     >
       <div class="main-container-layout">
