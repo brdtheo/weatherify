@@ -137,7 +137,7 @@
     -webkit-backdrop-filter: blur(18px);
     -moz-backdrop-filter: blur(18px);
     -ms-backdrop-filter: blur(18px);
-    background: rgba(70, 70, 70, 0.5);
+    background: rgba(50, 50, 50, 0.5);
     width: 100%;
     box-shadow: 0 -5px 16px 10px rgba(0, 0, 0, 0.1);
     font-family: "Lato", sans-serif;
