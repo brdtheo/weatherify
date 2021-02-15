@@ -5,7 +5,7 @@
 }
 
 :root {
-  --orange: #d66d32;
+  --accent-color: rgba(50, 50, 50, .4);
 }
 
 body {

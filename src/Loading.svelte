@@ -30,7 +30,6 @@
     align-items: center;
     width: 100%;
     height: 100%;
-    background: red;
     backdrop-filter: blur(20px);
     background-color: rgba(255, 255, 255, 0.2);
   }
@@ -64,7 +63,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    background: var(--orange);
+    background: var(--accent-color);
     width: 60px;
     height: 100%;
     animation: loading 1200ms infinite;

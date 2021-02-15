@@ -199,7 +199,7 @@
   }
 
   input:focus {
-    border-bottom-color: #d66d32;
+    border-bottom-color: var(--accent-color);
     outline: none;
   }
 
@@ -212,7 +212,7 @@
   }
 
   .search-button {
-    background: var(--orange);
+    background: var(--accent-color);
     color: #000;
     border: none;
     min-width: 80px;
@@ -221,6 +221,7 @@
     justify-content: center;
     align-items: center;
     font-size: 25px;
+    transition: background-color ease-in 200ms;
   }
 
   .search-button:focus {

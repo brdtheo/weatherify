@@ -16,6 +16,48 @@
   $: isBackgroundClouds =
     backgroundImage === "images/clouds.jpeg" ? true : false;
 
+  $: {
+    console.log(state);
+
+    let accentColor = null;
+
+    switch (state) {
+      case "Clouds":
+        accentColor = "#d66d32";
+        break;
+      case "Rain":
+        accentColor = "#829f9a";
+        break;
+      case "Drizzle":
+        accentColor = "#829f9a";
+        break;
+      case "Clear":
+        accentColor = "#a9cee1";
+        break;
+      case "Sunny":
+        accentColor = "#a9cee1";
+        break;
+      case "Snow":
+        accentColor = "#A6AAAA";
+        break;
+      case "Mist":
+        accentColor = "#92A8B1";
+        break;
+      case "Haze":
+        accentColor = "#92A8B1";
+        break;
+      default:
+        accentColor = null;
+    }
+
+    if (!accentColor) {
+      new Error("could not define accent color");
+    } else {
+      let root = document.documentElement;
+      root.style.setProperty("--accent-color", accentColor);
+    }
+  }
+
   function setError(event) {
     error = event.detail;
     setTimeout(() => {
