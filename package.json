@@ -2,7 +2,7 @@
   "name": "weatherify",
   "scripts": {
     "build": "rollup -c",
-    "dev": "HOST=0.0.0.0 rollup -c -w",
+    "dev": "rollup -c -w",
     "start": "sirv public"
   },
   "devDependencies": {
