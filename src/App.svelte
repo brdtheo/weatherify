@@ -95,26 +95,28 @@
 </script>
 
 <main>
-  <div
-    class="main-container {backgroundImage === 'images/clouds.jpeg'
-      ? 'background-top'
-      : ''}"
-    style={`background-image: url(${backgroundImage});`}
-  >
-    <div class="main-container-layout">
-      {#if loading}
-        <Loading />
-      {/if}
-      <WeatherContent {city} {temperature} {state} />
-      <Sidebar
-        on:setLoading={setLoading}
-        on:fetchNewData={updateProps}
-        on:setError={setError}
-        {weather}
-        {forecastWeather}
-      />
+  {#if backgroundImage}
+    <div
+      class="main-container {backgroundImage === 'images/clouds.jpeg'
+        ? 'background-top'
+        : ''}"
+      style={`background-image: url(${backgroundImage});`}
+    >
+      <div class="main-container-layout">
+        {#if loading}
+          <Loading />
+        {/if}
+        <WeatherContent {city} {temperature} {state} />
+        <Sidebar
+          on:setLoading={setLoading}
+          on:fetchNewData={updateProps}
+          on:setError={setError}
+          {weather}
+          {forecastWeather}
+        />
+      </div>
     </div>
-  </div>
+  {/if}
 
   {#if error}
     <ErrorBar on:setError={setError} />
