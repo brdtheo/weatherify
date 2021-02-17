@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --accent-color: rgba(50, 50, 50, .4);
+}
+
+body {
+  font-family: 'Jost';
+}
+
+main {
+  height: 100%;
+}
+
+body {
+  height: 100vh;
+}
