@@ -123,7 +123,7 @@
     <div class="sidebar-list">
       {#each forecastWeather as day}
         <div class="sidebar-list-item">
-          <span>{format(new Date(day.dt_txt), "MMMM d")}</span>
+          <span>{format(new Date(day.dt_txt.replace(/-/g, "/")), "MMMM d")}</span>
           <span>{Math.round(day.main.temp)}° - {day.weather[0].main}</span>
         </div>
       {/each}
