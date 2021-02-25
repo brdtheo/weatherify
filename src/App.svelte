@@ -17,8 +17,6 @@
     backgroundImage === "images/clouds.jpeg" ? true : false;
 
   $: {
-    console.log(state);
-
     let accentColor = null;
 
     switch (state) {
