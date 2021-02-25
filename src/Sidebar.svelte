@@ -30,10 +30,10 @@
       if (!(query.toLowerCase() === currentCity.toLowerCase())) {
         dispatch("setLoading", true);
         const current = await fetch(
-          `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${WEATHER_API_KEY}&units=metric`
+          `http://api.openweathermap.org/data/2.5/weather?q=${query}&appid=${__myapp.env.WEATHER_API_KEY}&units=metric`
         );
         const forecast = await fetch(
-          `http://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=${WEATHER_API_KEY}&units=metric`
+          `http://api.openweathermap.org/data/2.5/forecast?q=${query}&appid=${__myapp.env.WEATHER_API_KEY}&units=metric`
         );
 
         if (current.ok) {

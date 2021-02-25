@@ -105,10 +105,10 @@
 
   onMount(async () => {
     const current = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?q=London&appid=${WEATHER_API_KEY}&units=metric`
+      `http://api.openweathermap.org/data/2.5/weather?q=London&appid=${__myapp.env.WEATHER_API_KEY}&units=metric`
     );
     const forecast = await fetch(
-      `http://api.openweathermap.org/data/2.5/forecast?q=London&appid=${WEATHER_API_KEY}&units=metric`
+      `http://api.openweathermap.org/data/2.5/forecast?q=London&appid=${__myapp.env.WEATHER_API_KEY}&units=metric`
     );
 
     if (current.ok) {
